@@ -9,14 +9,27 @@ body {
   margin: auto;
 }
 
+.section1 h1 {
+  display: inline-block;
+  margin-right: 10px;
+}
+.section1 .btn-primary {
+  position: relative;
+  bottom: 5px;
+}
+
 table {
   border-collapse: collapse;
   /* margin: auto; */
   font-size: 0.9em;
   min-width: 400px;
-  display: block;
-  max-height: 100%;
+  display: inline-block;
+  max-height: 500px;
   overflow-y: scroll;
+}
+
+.htable {
+  max-height: 300px;
 }
 
 table thead tr {
@@ -49,6 +62,7 @@ table tfoot tr {
   background-color: teal;
   color: white;
   border-radius: 15px;
+  margin-top: 20px;
 }
 
 .btnView {
@@ -64,16 +78,42 @@ table tfoot tr {
   outline: none;
 }
 
+.btnUp {
+  text-decoration: none;
+  font-size: 0.9em;
+  padding: 5px 8px;
+  background-color: teal;
+  border: 1px solid #000;
+  color: white;
+  border-radius: 15px;
+  min-width: 100px;
+  cursor: pointer;
+  outline: none;
+}
+
+.btnd {
+  text-decoration: none;
+  font-size: 0.9em;
+  padding: 5px 8px;
+  background-color: red;
+  border: 1px solid #000;
+  color: white;
+  border-radius: 15px;
+  min-width: 100px;
+  cursor: pointer;
+  outline: none;
+}
+
 .modal {
   position: absolute;
   border: 1px solid #000;
   border-radius: 10px;
   margin: auto;
-  width: 80%;
+  width: 50%;
   height: 200px;
   top: 50%;
   left: 50%;
-  background-color: #ddd;
+  background-color: #fff;
   transform: translate(-50%, -50%);
   transition: 0.5s ease-in-out;
   visibility: hidden;
@@ -95,7 +135,40 @@ table tfoot tr {
   right: 20px;
 }
 
-input[type="text"] {
+.h-modal {
+  position: absolute;
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin: auto;
+  width: 60%;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+  transition: 0.5s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+  padding: 0 20px;
+  overflow-y: scroll;
+}
+
+.h-modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.h-modal a.h-modal-close {
+  position: absolute;
+  text-decoration: none;
+  color: #000;
+  font-size: 1.5rem;
+  top: 10px;
+  right: 20px;
+}
+
+input[type="text"],
+input[type="number"] {
   padding: 5px 10px;
   border-radius: 10px;
   outline: none;
@@ -104,11 +177,26 @@ input[type="text"] {
 
 .modal-body form {
   display: grid;
-  grid-template-columns: 1fr 1fr 0.5fr;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
 }
 
 .modal-body form .form-group.btn-holder {
   text-align: left;
+}
+
+.h-add-btn,
+.h-ded-btn {
+  text-decoration: none;
+  font-size: 0.9em;
+  padding: 5px 8px;
+  border: 1px solid #000;
+  background-color: teal;
+  color: white;
+  border-radius: 15px;
+  min-width: 100px;
+  cursor: pointer;
+  outline: none;
 }
 
 @media (max-width: 700px) {
