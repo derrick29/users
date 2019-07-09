@@ -95,19 +95,11 @@ function deleteUser(id) {
   });
 }
 
-function renderPointsTable() {}
-
-function showHModal(id, first_name, last_name) {
-  document.getElementById(
-    "tname"
-  ).innerHTML = `Name: ${first_name} ${last_name}`;
-  document.getElementById("tid").innerHTML = `User Id: ${id}`;
-  document.getElementById("h-hdnId").value = id;
+function renderPointsTable(id) {
   let options = {
     method: "GET",
     url: "http://localhost/users/pointsData.php?id=" + id
   };
-
   mAjax(options, res => {
     let resData = JSON.parse(res);
     let table = document
@@ -134,6 +126,16 @@ function showHModal(id, first_name, last_name) {
 
     table.parentNode.replaceChild(newtbody, table);
   });
+}
+
+function showHModal(id, first_name, last_name) {
+  document.getElementById(
+    "tname"
+  ).innerHTML = `Name: ${first_name} ${last_name}`;
+  document.getElementById("tid").innerHTML = `User Id: ${id}`;
+  document.getElementById("h-hdnId").value = id;
+
+  renderPointsTable(id);
 
   hmodal[0].classList.add("active");
 }
@@ -252,13 +254,38 @@ btnAddPoint.addEventListener("click", function() {
     if (status == "OK") {
       document.getElementById("txpoint").value = "";
       document.getElementById("txremark").value = "";
+      renderUserTable();
+      renderPointsTable(id);
     }
-    console.log(JSON.parse(res).remaining);
   });
 });
 
 btnDedPoint.addEventListener("click", function() {
   let id = document.getElementById("h-hdnId").value;
+  let points = document.getElementById("txpoint").value;
+  let remarks = document.getElementById("txremark").value;
 
-  console.log(id);
+  let options = {
+    url: "http://localhost/users/addPointRecord.php",
+    method: "POST",
+    contentType: "application/json",
+    data: {
+      user_id: id,
+      added_points: 0,
+      deducted_points: points,
+      remarks: remarks,
+      type: "deduct"
+    }
+  };
+
+  mAjax(options, res => {
+    // console.log(JSON.parse(res));
+    let status = JSON.parse(res).status;
+    if (status == "OK") {
+      document.getElementById("txpoint").value = "";
+      document.getElementById("txremark").value = "";
+      renderUserTable();
+      renderPointsTable(id);
+    }
+  });
 });

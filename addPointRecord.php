@@ -29,6 +29,8 @@ if($result){
         
         if($type == "add"){
             $trp = $rp+$added_points;
+        }else if($type == "deduct"){
+            $trp = $rp-$deducted_points;
         }
 
         $qry3 = "update users set remaining_points = $trp where user_id = $id";
