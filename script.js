@@ -43,7 +43,6 @@ function renderUserTable() {
     method: "GET"
   };
   mAjax(options, res => {
-    console.log(JSON.parse(res));
     let resData = JSON.parse(res);
     let table = document
       .getElementById("mtable")
@@ -214,7 +213,6 @@ btnsubmit.addEventListener("click", function() {
     }
 
     mAjax(options, res => {
-      // console.log(JSON.parse(res));
       let status = JSON.parse(res).status;
       if (status == "OK") {
         renderUserTable();
@@ -249,7 +247,6 @@ btnAddPoint.addEventListener("click", function() {
   };
 
   mAjax(options, res => {
-    // console.log(JSON.parse(res));
     let status = JSON.parse(res).status;
     if (status == "OK") {
       document.getElementById("txpoint").value = "";
@@ -279,7 +276,6 @@ btnDedPoint.addEventListener("click", function() {
   };
 
   mAjax(options, res => {
-    // console.log(JSON.parse(res));
     let status = JSON.parse(res).status;
     if (status == "OK") {
       document.getElementById("txpoint").value = "";
