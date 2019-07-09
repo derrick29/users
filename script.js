@@ -9,6 +9,8 @@ const btnsubmit = document.getElementById("btnsubmit");
 const btnAddPoint = document.getElementById("h-add-btn");
 const btnDedPoint = document.getElementById("h-ded-btn");
 
+const serverUrl = "http://localhost:8081/users/";
+
 function mAjax(options, callback) {
   var xhr;
 
@@ -38,7 +40,7 @@ function mAjax(options, callback) {
 
 function renderUserTable() {
   var options = {
-    url: "http://localhost/users/data.php",
+    url: serverUrl + "data.php",
     method: "GET"
   };
   mAjax(options, res => {
@@ -82,7 +84,7 @@ renderUserTable();
 function deleteUser(id) {
   let options = {
     method: "DELETE",
-    url: "http://localhost/users/userdata.php?id=" + id
+    url: serverUrl + "userdata.php?id=" + id
   };
 
   mAjax(options, res => {
@@ -96,7 +98,7 @@ function deleteUser(id) {
 function renderPointsTable(id) {
   let options = {
     method: "GET",
-    url: "http://localhost/users/pointsData.php?id=" + id
+    url: serverUrl + "pointsData.php?id=" + id
   };
   mAjax(options, res => {
     let resData = JSON.parse(res);
@@ -141,7 +143,7 @@ function showHModal(id, first_name, last_name) {
 function showUpModal(id) {
   let options = {
     method: "GET",
-    url: "http://localhost/users/userdata.php?id=" + id
+    url: serverUrl + "userdata.php?id=" + id
   };
 
   mAjax(options, res => {
@@ -190,7 +192,7 @@ btnsubmit.addEventListener("click", function() {
   } else {
     if (type == "add") {
       options = {
-        url: "http://localhost/users/postUser.php",
+        url: serverUrl + "postUser.php",
         method: "POST",
         contentType: "application/json",
         data: {
@@ -200,7 +202,7 @@ btnsubmit.addEventListener("click", function() {
       };
     } else if (type == "update") {
       options = {
-        url: "http://localhost/users/updateUser.php",
+        url: serverUrl + "updateUser.php",
         method: "POST",
         contentType: "application/json",
         data: {
@@ -233,7 +235,7 @@ btnAddPoint.addEventListener("click", function() {
   let remarks = document.getElementById("txremark").value;
 
   let options = {
-    url: "http://localhost/users/addPointRecord.php",
+    url: serverUrl + "addPointRecord.php",
     method: "POST",
     contentType: "application/json",
     data: {
@@ -262,7 +264,7 @@ btnDedPoint.addEventListener("click", function() {
   let remarks = document.getElementById("txremark").value;
 
   let options = {
-    url: "http://localhost/users/addPointRecord.php",
+    url: serverUrl + "addPointRecord.php",
     method: "POST",
     contentType: "application/json",
     data: {
