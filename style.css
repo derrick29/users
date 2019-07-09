@@ -1,0 +1,118 @@
+body {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+table {
+  border-collapse: collapse;
+  /* margin: auto; */
+  font-size: 0.9em;
+  min-width: 400px;
+  display: block;
+  max-height: 100%;
+  overflow-y: scroll;
+}
+
+table thead tr {
+  background-color: teal;
+  color: #fff;
+  text-align: left;
+}
+
+table th,
+table td {
+  padding: 10px 13px;
+}
+
+table tbody tr {
+  border-bottom: 1px solid teal;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+table tfoot tr {
+  text-align: center;
+}
+
+.btn-primary {
+  text-decoration: none;
+  font-size: 0.9em;
+  padding: 5px 8px;
+  background-color: teal;
+  color: white;
+  border-radius: 15px;
+}
+
+.btnView {
+  text-decoration: none;
+  font-size: 0.9em;
+  padding: 5px 8px;
+  background-color: orange;
+  border: 1px solid #000;
+  color: white;
+  border-radius: 15px;
+  min-width: 100px;
+  cursor: pointer;
+  outline: none;
+}
+
+.modal {
+  position: absolute;
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin: auto;
+  width: 80%;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  background-color: #ddd;
+  transform: translate(-50%, -50%);
+  transition: 0.5s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+  padding: 0 20px;
+}
+
+.modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal a.modal-close {
+  position: absolute;
+  text-decoration: none;
+  color: #000;
+  font-size: 1.5rem;
+  top: 10px;
+  right: 20px;
+}
+
+input[type="text"] {
+  padding: 5px 10px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid teal;
+}
+
+.modal-body form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr;
+}
+
+.modal-body form .form-group.btn-holder {
+  text-align: left;
+}
+
+@media (max-width: 700px) {
+  .modal-body form {
+    grid-template-columns: 1fr;
+  }
+}
