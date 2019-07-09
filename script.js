@@ -17,7 +17,6 @@ function mAjax(options, callback) {
   var contentType = options.contentType;
   var data = options.data;
 
-  // compatible with IE7+, Firefox, Chrome, Opera, Safari
   xhr = new XMLHttpRequest();
   xhr.open(method, url, true);
   if (contentType == "application/json") {
